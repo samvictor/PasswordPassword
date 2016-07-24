@@ -13,19 +13,19 @@ import java.util.Map;
  */
 public class DummyContent {
     static List<String> site_titles = new ArrayList<String>(){{
-        add("Facebook");
-        add("Google");
-        add("Amazon");
-        add("Microsoft");
-        add("Hulu");
-        add("Spotify");
-        add("Netflix");
-        add("Sony");
-        add("Apple");
-        add("Twitter");
-        add("Twitch");
-        add("Reddit");
-        add("Instagram");
+        add(0, "FACEBOOK");
+        add(1, "GOOGLE");
+        add(2, "AMAZON");
+        add(3, "MICROSOFT");
+        add(4, "HULU");
+        add(5, "SPOTIFY");
+        add(6, "NETFLIX");
+        add(7, "SONY");
+        add(8, "APPLE");
+        add(9, "TWITTER");
+        add(10, "TWITCH");
+        add(11, "REDDIT");
+        add(12, "INSTAGRAM");
     }};
 
     /**
@@ -42,7 +42,7 @@ public class DummyContent {
 
     static {
         // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
+        for (int i = 0; i <= COUNT; i++) {
             addItem(createDummyItem(i));
         }
     }

@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.saminniss.passwordpassword.dummy.DummyContent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,14 +54,14 @@ public class SiteListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
 
         View recyclerView = findViewById(R.id.site_list);
         assert recyclerView != null;
@@ -77,7 +78,7 @@ public class SiteListActivity extends AppCompatActivity {
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
-        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(15));
+        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration());
     }
 
 
@@ -98,11 +99,28 @@ public class SiteListActivity extends AppCompatActivity {
             return new ViewHolder(view);
         }
 
+        List<ArrayList<String>> site_colors = new ArrayList<ArrayList<String>>(){{
+            add(0, new ArrayList<String>(){{add("#eeeeee");add("#224477");}}); // facebook
+            add(1, new ArrayList<String>(){{add("#dc2020");add("#ffffff");}}); // google
+            add(2, new ArrayList<String>(){{add("#ff6622");add("#181818");}}); // amazon
+            add(3, new ArrayList<String>(){{add("#ffffff");add("#44aaff");}}); // microsoft
+            add(4, new ArrayList<String>(){{add("#55d055");add("#181818");}}); // hulu
+            add(5, new ArrayList<String>(){{add("#ffffff");add("#409040");}}); // spotify
+            add(6, new ArrayList<String>(){{add("#ee3333");add("#181818");}}); // netflix
+            add(7, new ArrayList<String>(){{add("#eeeeee");add("#202050");}}); // sony
+            add(8, new ArrayList<String>(){{add("#333333");add("#aaaaaa");}}); // apple
+            add(9, new ArrayList<String>(){{add("#ffffff");add("#64baff");}}); // twitter
+            add(10, new ArrayList<String>(){{add("#ffffff");add("#7044bd");}}); // twitch
+            add(11, new ArrayList<String>(){{add("#101010");add("#f77623");}}); // reddit
+            add(12, new ArrayList<String>(){{add("#ffffff");add("#8854ff");}}); // instagram
+        }};
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
-            //holder.mIdView.setText(mValues.get(position).id);
             holder.mContentView.setText(mValues.get(position).content);
+            holder.mContentView.setTextColor(Color.parseColor(site_colors.get(position).get(0)));
+            ((View) holder.mContentView.getParent()).setBackgroundColor(
+                                            Color.parseColor(site_colors.get(position).get(1)));
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -133,7 +151,6 @@ public class SiteListActivity extends AppCompatActivity {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
-            //public final TextView mIdView;
             public final TextView mContentView;
             public DummyContent.DummyItem mItem;
 
@@ -141,10 +158,8 @@ public class SiteListActivity extends AppCompatActivity {
                 super(view);
                 // WHERE THE MAGIC HAPPENS
                 mView = view;
-                //mIdView = (TextView) view.findViewById(R.id.id);
                 mContentView = (TextView) view.findViewById(R.id.content);
 
-                //mIdView.setTextColor(ContextCompat.getColor(sla_context, R.color.my_text));
                 mContentView.setTextColor(ContextCompat.getColor(sla_context, R.color.my_text));
                 mView.setBackgroundColor(ContextCompat.getColor(sla_context, R.color.my_text_bg));
             }
@@ -157,22 +172,12 @@ public class SiteListActivity extends AppCompatActivity {
     }
 
     public class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
-
-        private final int mVerticalSpaceHeight;
-
-        public VerticalSpaceItemDecoration(int mVerticalSpaceHeight) {
-            this.mVerticalSpaceHeight = mVerticalSpaceHeight;
-        }
-
         @Override
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
                                    RecyclerView.State state) {
             if (parent.getChildAdapterPosition(view) == 0)
                 outRect.top = 40;
-            outRect.bottom = mVerticalSpaceHeight;
-
-
-
+            outRect.bottom = 18;
         }
     }
 }
