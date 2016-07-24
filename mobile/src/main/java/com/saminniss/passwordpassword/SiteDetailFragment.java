@@ -1,9 +1,11 @@
 package com.saminniss.passwordpassword;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,9 @@ import com.saminniss.passwordpassword.dummy.DummyContent;
  * on handsets.
  */
 public class SiteDetailFragment extends Fragment {
+
+    Context context_sdf;
+
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -40,6 +45,8 @@ public class SiteDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        context_sdf = this.getContext();
+
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
@@ -61,7 +68,10 @@ public class SiteDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.site_detail)).setText(mItem.details);
+            TextView detail_text = ((TextView) rootView.findViewById(R.id.site_detail));
+            detail_text.setText(mItem.details);
+            detail_text.setTextColor(ContextCompat.getColor(context_sdf, R.color.my_text));
+            detail_text.setBackgroundColor(ContextCompat.getColor(context_sdf, R.color.my_text_bg));
         }
 
         return rootView;

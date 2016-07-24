@@ -12,6 +12,21 @@ import java.util.Map;
  * TODO: Replace all uses of this class before publishing your app.
  */
 public class DummyContent {
+    static List<String> site_titles = new ArrayList<String>(){{
+        add("Facebook");
+        add("Google");
+        add("Amazon");
+        add("Microsoft");
+        add("Hulu");
+        add("Spotify");
+        add("Netflix");
+        add("Sony");
+        add("Apple");
+        add("Twitter");
+        add("Twitch");
+        add("Reddit");
+        add("Instagram");
+    }};
 
     /**
      * An array of sample (dummy) items.
@@ -23,7 +38,7 @@ public class DummyContent {
      */
     public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
-    private static final int COUNT = 25;
+    private static final int COUNT = site_titles.size()-1;
 
     static {
         // Add some sample items.
@@ -38,16 +53,19 @@ public class DummyContent {
     }
 
     private static DummyItem createDummyItem(int position) {
-        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
+        String content;
+
+        content = site_titles.get(position);
+
+        return new DummyItem(String.valueOf(position), content, makeDetails(position));
     }
 
     private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
+        String detail;
+
+        detail = "Some details about number " + position;
+
+        return detail;
     }
 
     /**
