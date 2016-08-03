@@ -13,20 +13,55 @@ import java.util.Map;
  */
 public class DummyContent {
     static List<String> site_titles = new ArrayList<String>(){{
-        add(0, "FACEBOOK");
-        add(1, "GOOGLE");
-        add(2, "AMAZON");
-        add(3, "MICROSOFT");
-        add(4, "HULU");
-        add(5, "SPOTIFY");
-        add(6, "NETFLIX");
-        add(7, "SONY");
-        add(8, "APPLE");
-        add(9, "TWITTER");
-        add(10, "TWITCH");
-        add(11, "REDDIT");
-        add(12, "INSTAGRAM");
+        add(0, "Facebook");
+        add(1, "Google");
+        add(2, "Amazon");
+        add(3, "Microsoft");
+        add(4, "Hulu");
+        add(5, "Spotify");
+        add(6, "Netflix");
+        add(7, "Sony");
+        add(8, "Apple");
+        add(9, "Twitter");
+        add(10, "Twitch");
+        add(11, "Reddit");
+        add(12, "Instagram");
     }};
+
+    private static List<String> passwords = new ArrayList<String>(){{
+        add(0, "• at least 6 characters\n" +                                // Facebook
+                "• Strong password (Try using uppercase, lowercase and/or symbols)");
+        add(1, "• at least 8 characters\n" +                                // Google
+                "• Username can't contain & = < , > + \n" +
+                "• Username can't contain more than one period (.) in a row\n" +
+                "• Username can begin or end with non-alphanumeric characters\n" +
+                "• Don't reuse previous few passwords");
+        add(2, "• at least 6 characters\n" +                                // Amazon
+                "• Don't reuse password");
+        add(3, "• at least 8 characters\n" +                                // Microsoft
+                "• at least 2 uppercase\n" +
+                "• at least 2 lowercase\n" +
+                "• at least 2 numbers\n" +
+                "• at least 2 symbols\n" +
+                "This has changed recently. If your password is very old," +
+                " you may only have needed 8 characters and some numbers.");
+        add(4, "• at least 6 characters\n" +                                // Hulu
+                "You can also sign in with Facebook (if you remember that password)");
+        add(5, "• at least 4 characters\n" +                                // Spotify
+                "You can also sign in with Facebook");
+        add(6, "• at least 4 characters");                                  // Netflix
+        add(7, "• at least 8 characters\n" +                                // Sony
+                "• at least 1 letter\n" +
+                "• at least 1 number\n" +
+                "• no repeating characters\n" +
+                "• cannot contain username or email address");
+        add(8, "Apple");                                                    // Apple
+        add(9, "Twitter");                                                  // Twitter
+        add(10, "Twitch");                                                  // Twitch
+        add(11, "Reddit");                                                  // Reddit
+        add(12, "Instagram");                                               // Instagram
+    }};
+
 
     /**
      * An array of sample (dummy) items.
@@ -60,10 +95,12 @@ public class DummyContent {
         return new DummyItem(String.valueOf(position), content, makeDetails(position));
     }
 
+
+
     private static String makeDetails(int position) {
         String detail;
 
-        detail = "Some details about number " + position;
+        detail = passwords.get(position);
 
         return detail;
     }

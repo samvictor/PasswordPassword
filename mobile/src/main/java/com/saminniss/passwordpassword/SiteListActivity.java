@@ -177,7 +177,7 @@ public class SiteListActivity extends AppCompatActivity {
                                    RecyclerView.State state) {
             if (parent.getChildAdapterPosition(view) == 0)
                 outRect.top = 40;
-            outRect.bottom = 18;
+            outRect.bottom = 22;
         }
     }
 }
