@@ -55,11 +55,15 @@ public class DummyContent {
                 "• at least 1 number\n" +
                 "• no repeating characters\n" +
                 "• cannot contain username or email address");
-        add(8, "Apple");                                                    // Apple
-        add(9, "Twitter");                                                  // Twitter
-        add(10, "Twitch");                                                  // Twitch
-        add(11, "Reddit");                                                  // Reddit
-        add(12, "Instagram");                                               // Instagram
+        add(8, "• at least 8 characters\n" +                                // Apple
+                "• upper and lower case\n" +
+                "• at least 1 number");
+        add(9, "• at least 6 characters");                                  // Twitter
+        add(10, "• at least 8 characters\n" +                               // Twitch
+                "You can also log in with Facebook");
+        add(11, "• at least 6 characters");                                 // Reddit
+        add(12, "• at least 6 characters\n" +
+                "You can also log in with Facebook");                                               // Instagram
     }};
 
 
