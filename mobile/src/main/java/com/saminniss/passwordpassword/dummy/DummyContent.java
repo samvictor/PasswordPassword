@@ -12,6 +12,32 @@ import java.util.Map;
  * TODO: Replace all uses of this class before publishing your app.
  */
 public class DummyContent {
+
+
+    /**
+     * A dummy item representing a piece of content.
+     */
+    public static class DummyItem {
+        public final String id;
+        public final String content;
+        public final String details;
+        public final String text_color;
+        public final String bg_color;
+
+        public DummyItem(String id, String content, String details, String text_color, String bg_color) {
+            this.id = id;
+            this.content = content;
+            this.details = details;
+            this.text_color = text_color;
+            this.bg_color = bg_color;
+        }
+
+        @Override
+        public String toString() {
+            return content;
+        }
+    }
+
     static List<String> site_titles = new ArrayList<String>(){{
         add(0, "Facebook");
         add(1, "Google");
@@ -67,6 +93,22 @@ public class DummyContent {
     }};
 
 
+    private static List<ArrayList<String>> site_colors = new ArrayList<ArrayList<String>>(){{
+        add(0, new ArrayList<String>(){{add("#eeeeee");add("#224477");}}); // facebook
+        add(1, new ArrayList<String>(){{add("#dc2020");add("#ffffff");}}); // google
+        add(2, new ArrayList<String>(){{add("#ff6622");add("#181818");}}); // amazon
+        add(3, new ArrayList<String>(){{add("#ffffff");add("#44aaff");}}); // microsoft
+        add(4, new ArrayList<String>(){{add("#55d055");add("#181818");}}); // hulu
+        add(5, new ArrayList<String>(){{add("#ffffff");add("#409040");}}); // spotify
+        add(6, new ArrayList<String>(){{add("#ee3333");add("#181818");}}); // netflix
+        add(7, new ArrayList<String>(){{add("#eeeeee");add("#202050");}}); // sony
+        add(8, new ArrayList<String>(){{add("#333333");add("#aaaaaa");}}); // apple
+        add(9, new ArrayList<String>(){{add("#ffffff");add("#64baff");}}); // twitter
+        add(10, new ArrayList<String>(){{add("#ffffff");add("#7044bd");}}); // twitch
+        add(11, new ArrayList<String>(){{add("#101010");add("#f77623");}}); // reddit
+        add(12, new ArrayList<String>(){{add("#ffffff");add("#8854ff");}}); // instagram
+    }};
+
     /**
      * An array of sample (dummy) items.
      */
@@ -92,11 +134,13 @@ public class DummyContent {
     }
 
     private static DummyItem createDummyItem(int position) {
-        String content;
+        String content, text_color, bg_color;
 
         content = site_titles.get(position);
+        text_color = site_colors.get(position).get(0);
+        bg_color = site_colors.get(position).get(1);
 
-        return new DummyItem(String.valueOf(position), content, makeDetails(position));
+        return new DummyItem(String.valueOf(position), content, makeDetails(position), text_color, bg_color);
     }
 
 
@@ -107,25 +151,5 @@ public class DummyContent {
         detail = passwords.get(position);
 
         return detail;
-    }
-
-    /**
-     * A dummy item representing a piece of content.
-     */
-    public static class DummyItem {
-        public final String id;
-        public final String content;
-        public final String details;
-
-        public DummyItem(String id, String content, String details) {
-            this.id = id;
-            this.content = content;
-            this.details = details;
-        }
-
-        @Override
-        public String toString() {
-            return content;
-        }
     }
 }

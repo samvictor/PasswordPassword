@@ -2,6 +2,7 @@ package com.saminniss.passwordpassword;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -71,7 +72,16 @@ public class SiteDetailFragment extends Fragment {
             TextView detail_text = ((TextView) rootView.findViewById(R.id.site_detail));
             detail_text.setText(mItem.details);
             detail_text.setTextColor(ContextCompat.getColor(context_sdf, R.color.my_text));
+            //detail_text.setTextColor(Color.parseColor(mItem.text_color));
             detail_text.setBackgroundColor(ContextCompat.getColor(context_sdf, R.color.my_text_bg));
+            //detail_text.setBackgroundColor(Color.parseColor(mItem.bg_color));
+
+            /*/detail_text.getParent();
+            View rootView2 = inflater.inflate(R.layout.activity_site_detail, container, false);
+            View toolbarLayout = rootView2.findViewById(R.id.toolbar);
+            toolbarLayout.setBackgroundColor(Color.parseColor(mItem.bg_color));
+            */
+
         }
 
         return rootView;
